@@ -41,10 +41,21 @@ public class Client {
 	// convert char to ascii, uppercase have values 65-90
 	// lowercase are 97-122
 	private boolean hasFoundSpecialSignInString(String stringToCheck) {
-		int sAscii;
-		for(char s : stringToCheck.toCharArray()) {
-			sAscii = (int) s;
-			if(!((sAscii >= 65 && sAscii <= 90) || (sAscii >= 97 && sAscii <= 122)))
+		int cAscii;
+		for(char c : stringToCheck.toCharArray()) {
+			cAscii = (int) c;
+			if(!((cAscii >= 65 && cAscii <= 90) || (cAscii >= 97 && cAscii <= 122)))
+				return true;
+		}
+		return false;
+	}
+	
+	// numbers in ascii have values 48-57
+	private boolean hasFoundNotANumberInString(String stringToCheck) {
+		int cAscii;
+		for(char c : stringToCheck.toCharArray()) {
+			cAscii = (int) c;
+			if(!(cAscii >= 48 && cAscii <= 57))
 				return true;
 		}
 		return false;
