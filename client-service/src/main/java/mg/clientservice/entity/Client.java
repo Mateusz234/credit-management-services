@@ -37,5 +37,17 @@ public class Client {
 	public void setPersonalId(String personalId) {
 		this.personalId = personalId;
 	}
+	
+	// convert char to ascii, uppercase have values 65-90
+	// lowercase are 97-122
+	private boolean hasFoundSpecialSignInString(String stringToCheck) {
+		int sAscii;
+		for(char s : stringToCheck.toCharArray()) {
+			sAscii = (int) s;
+			if(!((sAscii >= 65 && sAscii <= 90) || (sAscii >= 97 && sAscii <= 122)))
+				return true;
+		}
+		return false;
+	}
 
 }
