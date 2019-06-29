@@ -37,7 +37,6 @@ public class CustomerDao {
 				});
 	}
 	
-	@SuppressWarnings("unchecked")
 	public Customer get(int creditId) {
 		
 		Customer Customer = new Customer();
@@ -48,7 +47,7 @@ public class CustomerDao {
 		return Customer;
 	}
 	
-	//run at start of app. test print of query
+	//run at start of app. test print of query result
 	@EventListener(ApplicationReadyEvent.class)
 	public void callAtBeggining() {
 		int creditId = 3;
