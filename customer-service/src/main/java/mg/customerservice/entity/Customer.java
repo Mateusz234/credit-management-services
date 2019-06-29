@@ -1,19 +1,29 @@
-package mg.clientservice.entity;
+package mg.customerservice.entity;
 
-public class Client {
+public class Customer {
 
+	private int creditId;
 	private String name, lastName, personalId;
-
-	public Client() {
+	
+	public Customer() {
 		
 	}
 	
-	public Client(String name, String lastName, String personalId) {
+	public Customer(int creditId, String name, String lastName, String personalId) {
+		setCreditId(creditId);
 		setName(name);
 		setLastName(lastName);
 		setPersonalId(personalId);
 	}
 
+	public int getCreditId() {
+		return creditId;
+	}
+
+	public void setCreditId(int creditId) {
+		this.creditId = creditId;
+	}
+	
 	public String getName() {
 		return name;
 	}

@@ -1,100 +1,114 @@
-package mg.clientservice;
+package mg.customerservice;
 
 import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import mg.clientservice.entity.Client;
+import mg.customerservice.entity.Customer;
 
-public class ClientTest {
+public class CustomerTest {
 
-	private Client newClient = new Client();
+	private Customer newCustomer = new Customer();
+	private int exampleCreditId = 1;
 	private String exampleName = "Jan";
 	private String exampleLastName = "Kowalski";
 	private String examplePersonalId = "94121200000";
 
+	// ** Credit ID tests **//
+	
+	@Test
+	public void shouldAllowToSetCreditId() {
+		newCustomer.setCreditId(exampleCreditId);
+		assertEquals(newCustomer.getCreditId(), exampleCreditId);
+	}
+
+	@Test(expected = IllegalArgumentException.class)
+	public void shouldNotAllowToSetNegativeCreditId() {
+		newCustomer.setCreditId(-5);
+	}
+	
 	// ** Name tests **//
 
 	@Test
 	public void shouldAllowToSetName() {
-		newClient.setName(exampleName);
-		assertEquals(newClient.getName(), exampleName);
+		newCustomer.setName(exampleName);
+		assertEquals(newCustomer.getName(), exampleName);
 	}
 
 	@Test(expected = IllegalArgumentException.class)
 	public void shouldNotAllowToSetEmptyName() {
-		newClient.setName("");
+		newCustomer.setName("");
 	}
 
 	@Test(expected = IllegalArgumentException.class)
 	public void shouldNotAllowToSetNullName() {
-		newClient.setName(null);
+		newCustomer.setName(null);
 	}
 
 	@Test(expected = IllegalArgumentException.class)
 	public void shouldNotAllowToUseSpecialSignsAndNumbersInName() {
-		newClient.setName("J0AnN!");
+		newCustomer.setName("J0AnN!");
 	}
 
 	// ** Last name tests **//
 
 	@Test
 	public void shouldAllowToSetLastName() {
-		newClient.setLastName(exampleLastName);
-		assertEquals(newClient.getLastName(), exampleLastName);
+		newCustomer.setLastName(exampleLastName);
+		assertEquals(newCustomer.getLastName(), exampleLastName);
 	}
 
 	@Test(expected = IllegalArgumentException.class)
 	public void shouldNotAllowToSetEmptyLastName() {
-		newClient.setLastName("");
+		newCustomer.setLastName("");
 	}
 
 	@Test(expected = IllegalArgumentException.class)
 	public void shouldNotAllowToSetNullLastName() {
-		newClient.setLastName(null);
+		newCustomer.setLastName(null);
 	}
 
 	@Test(expected = IllegalArgumentException.class)
 	public void shouldNotAllowToUseSpecialSignsAndNumbersInLastName() {
-		newClient.setLastName("/N0wak");
+		newCustomer.setLastName("/N0wak");
 	}
 
 	// ** Personal ID tests **//
 
 	@Test
 	public void shouldAllowToSetPersonalId() {
-		newClient.setPersonalId(examplePersonalId);
-		assertEquals(newClient.getPersonalId(), examplePersonalId);
+		newCustomer.setPersonalId(examplePersonalId);
+		assertEquals(newCustomer.getPersonalId(), examplePersonalId);
 	}
 
 	@Test(expected = IllegalArgumentException.class)
 	public void shouldNotAllowToSetEmptyPersonalId() {
-		newClient.setPersonalId("");
+		newCustomer.setPersonalId("");
 	}
 
 	@Test(expected = IllegalArgumentException.class)
 	public void shouldNotAllowToSetNullPersonalId() {
-		newClient.setPersonalId(null);
+		newCustomer.setPersonalId(null);
 	}
 
 	@Test(expected = IllegalArgumentException.class)
 	public void shouldNotAllowToUseLettersInPersonalId() {
-		newClient.setPersonalId("9412x200000");
+		newCustomer.setPersonalId("9412x200000");
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
 	public void shouldNotAllowToUseSpecialSignsInPersonalId() {
-		newClient.setPersonalId("9412-200000");
+		newCustomer.setPersonalId("9412-200000");
 	}
 
 	@Test(expected = IllegalArgumentException.class)
 	public void personalIdShouldNotHaveMoreThan11Numbers() {
-		newClient.setPersonalId("941272000067");
+		newCustomer.setPersonalId("941272000067");
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
 	public void personalIdShouldNotHaveLessThan11Numbers() {
-		newClient.setPersonalId("94127200");
+		newCustomer.setPersonalId("94127200");
 	}
 
 }

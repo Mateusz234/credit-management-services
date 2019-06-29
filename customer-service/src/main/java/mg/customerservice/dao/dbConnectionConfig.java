@@ -1,4 +1,4 @@
-package mg.clientservice.dao;
+package mg.customerservice.dao;
 
 import javax.sql.DataSource;
 
