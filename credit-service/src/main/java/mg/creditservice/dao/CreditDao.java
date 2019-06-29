@@ -1,5 +1,6 @@
 package mg.creditservice.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -17,6 +18,9 @@ public class CreditDao {
 	@Autowired
 	JdbcTemplate jdbcTemplate;
 
+	List<Map<String, Object>> creditListOfMap = new ArrayList<>();
+	List<Credit> creditList = new ArrayList<>();
+
 	public CreditDao(JdbcTemplate jdbcTemplate) {
 		this.jdbcTemplate = jdbcTemplate;
 	}
@@ -28,17 +32,24 @@ public class CreditDao {
 		jdbcTemplate.update(sql, new Object[] { credit.getCreditId() });
 	}
 
-	public List<Map<String, Object>> getAll() {
-
+	/*TODO implement checking if id exists (ids are unique)
+	 * then add if it doesn't instead of
+	 * clearing and creating new objects. Slower but less memory needed
+	 */
+	public List<Credit> getAll() {
+		
+		//prepare collections
+		creditListOfMap.clear();
+		creditList.clear();
+		
 		String sql = "SELECT * FROM Credit";
-		return jdbcTemplate.queryForList(sql);
-
-	}
-
-	// run at start of app. test print of query result
-	@EventListener(ApplicationReadyEvent.class)
-	public void callAtBeggining() {
-		System.out.println(getAll());
+		creditListOfMap = jdbcTemplate.queryForList(sql);
+		for (Map<String, Object> entry : creditListOfMap) {
+			for (String key : entry.keySet()) {
+				creditList.add(new Credit((int) entry.get(key)));
+			}
+		}
+		return creditList;
 	}
 
 }

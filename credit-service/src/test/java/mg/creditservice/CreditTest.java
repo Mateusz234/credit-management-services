@@ -23,4 +23,6 @@ public class CreditTest {
 	public void shouldNotAllowToSetNegativeCreditId() {
 		newCredit.setCreditId(-5);
 	}
+	
+	// TODO add tests for not nulls for product and customer
 }

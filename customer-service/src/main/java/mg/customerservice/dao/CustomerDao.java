@@ -37,7 +37,7 @@ public class CustomerDao {
 				});
 	}
 	
-	public Customer get(int creditId) {
+	public Customer getCustomerById(int creditId) {
 		
 		Customer Customer = new Customer();
 		String sql = "SELECT * FROM Customer WHERE creditId = ? ";
@@ -45,14 +45,6 @@ public class CustomerDao {
 		Customer = (Customer) jdbcTemplate.queryForObject(sql, new Object [] {creditId}, new CustomerRowMaper());
 		
 		return Customer;
-	}
-	
-	//run at start of app. test print of query result
-	@EventListener(ApplicationReadyEvent.class)
-	public void callAtBeggining() {
-		int creditId = 3;
-		System.out.println(get(creditId).getName() + " " + get(creditId).getLastName() + " " +  get(creditId).getPersonalId());
-		
 	}
 	
 	// Mapper to populate Customer object from query

@@ -29,7 +29,7 @@ public class ProductDao {
 		jdbcTemplate.update(sql, new Object[] { product.getCreditId(), product.getName(), product.getValue(), });
 	}
 
-	public Product get(int creditId) {
+	public Product getProductById(int creditId) {
 
 		Product product = new Product();
 		String sql = "SELECT * FROM Product WHERE creditId = ? ";
@@ -37,13 +37,6 @@ public class ProductDao {
 		product = (Product) jdbcTemplate.queryForObject(sql, new Object[] { creditId }, new ProductRowMaper());
 
 		return product;
-	}
-
-	// run at start of app. test print of query result
-	@EventListener(ApplicationReadyEvent.class)
-	public void callAtBeggining() {
-		int creditId = 2;
-		System.out.println(get(creditId).getName() + " " + get(creditId).getValue());
 	}
 
 	// Mapper to populate Customer object from query
