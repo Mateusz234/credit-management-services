@@ -13,7 +13,7 @@ public class ProductTest {
 	private int exampleCreditId = 1;
 	private String exampleName = "Kredyt hipoteczny";
 	private double exampleValue = 25.16;
-	private double precisionLoss = 0.0001;
+	private double precisionLoss = 0.01;
 
 	// ** Credit ID tests **//
 	

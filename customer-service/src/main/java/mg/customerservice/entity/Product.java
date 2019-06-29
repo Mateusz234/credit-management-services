@@ -1,15 +1,15 @@
 package mg.customerservice.entity;
 
-public class Customer {
+public class Product {
 
 	private int creditId;
 	private String name, lastName, personalId;
 
-	public Customer() {
+	public Product() {
 
 	}
 
-	public Customer(int creditId, String name, String lastName, String personalId) {
+	public Product(int creditId, String name, String lastName, String personalId) {
 		setCreditId(creditId);
 		setName(name);
 		setLastName(lastName);

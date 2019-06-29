@@ -1,4 +1,4 @@
-package mg.customerservice.dao;
+package mg.productservice.dao;
 
 import javax.sql.DataSource;
 
@@ -17,7 +17,7 @@ public class dbConnectionConfig {
 
 		DataSourceBuilder dataSourceBuilder = DataSourceBuilder.create();
 		dataSourceBuilder.url("jdbc:mysql://192.168.1.63:3306/creditDB?serverTimezone=UTC");
-		dataSourceBuilder.username("customer");
+		dataSourceBuilder.username("product");
 		dataSourceBuilder.password("123456"); //TODO hide it in prop file
 		dataSourceBuilder.driverClassName("com.mysql.jdbc.Driver");
 		return dataSourceBuilder.build();

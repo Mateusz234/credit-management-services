@@ -4,7 +4,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import mg.customerservice.entity.Customer;
+import mg.customerservice.entity.Product;
 
 @RestController
 public class CustomerController {
@@ -15,8 +15,8 @@ public class CustomerController {
 	}
 	
 	@RequestMapping(method=RequestMethod.GET, value="/getCustomer")
-	public Customer getCustomer() {
-		return new Customer();
+	public Product getCustomer() {
+		return new Product();
 	}
 	
 }
