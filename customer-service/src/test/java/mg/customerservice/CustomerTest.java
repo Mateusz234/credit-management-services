@@ -4,11 +4,11 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import mg.customerservice.entity.Product;
+import mg.customerservice.entity.Customer;
 
 public class CustomerTest {
 
-	private Product newCustomer = new Product();
+	private Customer newCustomer = new Customer();
 	private int exampleCreditId = 1;
 	private String exampleName = "Jan";
 	private String exampleLastName = "Kowalski";

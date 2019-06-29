@@ -12,7 +12,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
-import mg.customerservice.entity.Product;
+import mg.customerservice.entity.Customer;
 
 @Repository
 public class CustomerDao {
@@ -25,7 +25,7 @@ public class CustomerDao {
 		this.jdbcTemplate = jdbcTemplate;
 	}
 
-	public void add(Product Customer) {
+	public void add(Customer Customer) {
 
 		String sql = "INSERT INTO Customer VALUES(?,?,?,?)";
 
@@ -37,12 +37,12 @@ public class CustomerDao {
 				});
 	}
 	
-	public Product get(int creditId) {
+	public Customer get(int creditId) {
 		
-		Product Customer = new Product();
+		Customer Customer = new Customer();
 		String sql = "SELECT * FROM Customer WHERE creditId = ? ";
 		
-		Customer = (Product) jdbcTemplate.queryForObject(sql, new Object [] {creditId}, new CustomerRowMaper());
+		Customer = (Customer) jdbcTemplate.queryForObject(sql, new Object [] {creditId}, new CustomerRowMaper());
 		
 		return Customer;
 	}
@@ -59,7 +59,7 @@ public class CustomerDao {
 	private class CustomerRowMaper implements RowMapper<Object> {
 		
 		public Object mapRow(ResultSet rs, int rowNum) throws SQLException {
-			Product Customer = new Product();
+			Customer Customer = new Customer();
 			Customer.setCreditId(rs.getInt("creditId"));
 			Customer.setName(rs.getString("name"));
 			Customer.setLastName(rs.getString("lastName"));
