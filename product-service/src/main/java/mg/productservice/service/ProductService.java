@@ -16,5 +16,13 @@ public class ProductService {
 		return productDao.getProductById(creditId);
 		
 	}
+
+	public void createProduct(Product product) {
+		
+		productDao.add(product);
+		
+		// TODO return succes or not
+		
+	}
 	
 }

@@ -79,4 +79,9 @@ public class Product {
 		return false;
 	}
 
+	@Override
+	public String toString() {
+		return "Product [creditId=" + creditId + ", name=" + name + ", value=" + value + "]";
+	}
+
 }

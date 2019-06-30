@@ -1,6 +1,8 @@
 package mg.creditservice.service;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,15 +22,46 @@ public class CreditService {
 	@Autowired
 	RestTemplate restTemplate;
 	List<Credit> creditList = new ArrayList<>();
-	
+	int newId;
+
 	public List<Credit> getAllCredits() {
 		creditList = creditDao.getAll();
-		for(Credit c : creditList ) {
-			//TODO change that hardcoded method for discovery
-			c.setCustomer(restTemplate.getForObject("http://localhost:8083/getCustomer/" + c.getCreditId(), Customer.class));
-			c.setProduct(restTemplate.getForObject("http://localhost:8082/getProduct/" + c.getCreditId(), Product.class));
+		for (Credit c : creditList) {
+			// TODO change that hardcoded method for discovery
+			c.setCustomer(
+					restTemplate.getForObject("http://localhost:8083/getCustomer/" + c.getCreditId(), Customer.class));
+			c.setProduct(
+					restTemplate.getForObject("http://localhost:8082/getProduct/" + c.getCreditId(), Product.class));
 		}
+		// TODO return creditlist to string. override credit tostring
 		return creditList;
+	}
+
+	public int createCredit(Credit credit) {
+		newId = generateNewId();
+		credit.setCreditId(newId);
+		// set credit ID so it can be foreign key in customer and product DB
+		credit.getCustomer().setCreditId(newId);
+		credit.getProduct().setCreditId(newId);
+		creditDao.add(credit);
+		restTemplate.postForObject("http://localhost:8082/createProduct/", credit.getProduct(), Product.class);
+		restTemplate.postForObject("http://localhost:8083/createCustomer/", credit.getCustomer(), Customer.class);
+		// TODO return ID if ok, else return -1 - controller will show error page with
+		// desc
+		return credit.getCreditId();
+	}
+
+	/**
+	 * Get all credits, find max, create new ID with value max++
+	 * 
+	 * @return new ID for credit
+	 */
+	private int generateNewId() {
+		creditList = creditDao.getAll();
+		if (creditList.isEmpty())
+			return 1;
+		else
+			return Collections.max(creditList, Comparator.comparing(c -> c.getCreditId())).getCreditId() + 1;
 	}
 
 }

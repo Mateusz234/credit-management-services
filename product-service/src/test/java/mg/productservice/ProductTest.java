@@ -11,7 +11,7 @@ public class ProductTest {
 
 	private Product newProduct = new Product();
 	private int exampleCreditId = 1;
-	private String exampleName = "Kredyt hipoteczny";
+	private String exampleName = "Mieszkanie";
 	private double exampleValue = 25.16;
 	private double precisionLoss = 0.01;
 
@@ -48,7 +48,7 @@ public class ProductTest {
 
 	@Test(expected = IllegalArgumentException.class)
 	public void shouldNotAllowToUseSpecialSignsAndNumbersInName() {
-		newProduct.setName("Kr@d1yt");
+		newProduct.setName("M!eszkanie");
 	}
 
 	// ** Value tests **//

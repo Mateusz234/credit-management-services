@@ -10,6 +10,7 @@ public class CreditTest {
 
 	private Credit newCredit = new Credit();
 	private int exampleCreditId = 1;
+	private String exampleName = "Kredyt hipoteczny";
 
 	// ** Credit ID tests **//
 	
@@ -22,6 +23,29 @@ public class CreditTest {
 	@Test(expected = IllegalArgumentException.class)
 	public void shouldNotAllowToSetNegativeCreditId() {
 		newCredit.setCreditId(-5);
+	}
+	
+	// ** Name tests **//
+
+	@Test
+	public void shouldAllowToSetName() {
+		newCredit.setName(exampleName);
+		assertEquals(newCredit.getName(), exampleName);
+	}
+
+	@Test(expected = IllegalArgumentException.class)
+	public void shouldNotAllowToSetEmptyName() {
+		newCredit.setName("");
+	}
+
+	@Test(expected = IllegalArgumentException.class)
+	public void shouldNotAllowToSetNullName() {
+		newCredit.setName(null);
+	}
+
+	@Test(expected = IllegalArgumentException.class)
+	public void shouldNotAllowToUseSpecialSignsAndNumbersInName() {
+		newCredit.setName("Kr@d1yt");
 	}
 	
 	// TODO add tests for not nulls for product and customer

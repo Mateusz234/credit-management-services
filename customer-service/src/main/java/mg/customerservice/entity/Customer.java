@@ -94,4 +94,12 @@ public class Customer {
 		return false;
 	}
 
+	@Override
+	public String toString() {
+		return "Customer [creditId=" + creditId + ", name=" + name + ", lastName=" + lastName + ", personalId="
+				+ personalId + "]";
+	}
+
+	
+	
 }
