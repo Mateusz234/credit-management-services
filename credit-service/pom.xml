@@ -41,6 +41,7 @@
 	</dependencies>
 
 	<build>
+	<finalName>credit-service</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
