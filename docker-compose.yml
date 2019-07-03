@@ -5,10 +5,14 @@ services:
   mysql:
     image: mysql:8.0.2
     environment:
-      MYSQL_ROOT_PASSWORD: 123456
-      MYSQL_DATABASE: creditdb
+      - MYSQL_ROOT_PASSWORD=password
+      - MYSQL_DATABASE=creditdb
     ports:
       - "3308:3306"
+    networks:
+      credit-network:
+        aliases:
+          - mysql
     volumes:
       - "./data:/var/lib/mysql:rw"
   credit-service:
@@ -18,8 +22,14 @@ services:
     image: credit-service
     ports:
       - 8081:8081
+    depends_on:
+      - mysql
+      - product-service
+      - customer-service
     networks:
-      - network1
+      credit-network:
+        aliases:
+          - credit-service
   product-service:
     build:
       context: ./
@@ -27,8 +37,12 @@ services:
     image: product-service
     ports:
       - 8082:8082
+    depends_on:
+      - mysql
     networks:
-      - network1
+      credit-network:
+        aliases:
+          - product-service
   customer-service:
     build:
       context: ./
@@ -36,8 +50,12 @@ services:
     image: customer-service
     ports:
       - 8083:8083
+    depends_on:
+      - mysql
     networks:
-      - network1
+      credit-network:
+        aliases:
+          - customer-service
  
 networks:
-  network1:
+  credit-network:

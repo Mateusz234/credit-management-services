@@ -22,7 +22,7 @@ public class ProductDao {
 
 	public void add(Product product) {
 
-		String sql = "INSERT INTO Product VALUES(?,?,?)";
+		String sql = "INSERT INTO product VALUES(?,?,?)";
 
 		jdbcTemplate.update(sql, new Object[] { product.getCreditId(), product.getName(), product.getValue(), });
 	}
@@ -30,7 +30,7 @@ public class ProductDao {
 	public Product getProductById(int creditId) {
 
 		Product product = new Product();
-		String sql = "SELECT * FROM Product WHERE creditId = ? ";
+		String sql = "SELECT * FROM product WHERE creditId = ? ";
 
 		product = (Product) jdbcTemplate.queryForObject(sql, new Object[] { creditId }, new ProductRowMaper());
 

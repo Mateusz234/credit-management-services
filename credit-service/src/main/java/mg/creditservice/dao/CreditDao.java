@@ -27,7 +27,7 @@ public class CreditDao {
 
 	public void add(Credit credit) {
 
-		String sql = "INSERT INTO Credit VALUES(?,?)";
+		String sql = "INSERT INTO credit VALUES(?,?)";
 
 		jdbcTemplate.update(sql, new Object[] { 
 				credit.getCreditId(), 
@@ -36,7 +36,7 @@ public class CreditDao {
 	}
 
 	public List<Credit> getAll() {
-		String sql = "SELECT * FROM Credit";
+		String sql = "SELECT * FROM credit";
 		creditList.clear(); // prepare list for another call
 		List<Map<String, Object>> rows = jdbcTemplate.queryForList(sql);
 		// Get objects from map and put it to a list

@@ -27,7 +27,7 @@ public class CustomerDao {
 
 	public void add(Customer Customer) {
 
-		String sql = "INSERT INTO Customer VALUES(?,?,?,?)";
+		String sql = "INSERT INTO customer VALUES(?,?,?,?)";
 
 		jdbcTemplate.update(sql, new Object[] { 
 				Customer.getCreditId(),
@@ -40,7 +40,7 @@ public class CustomerDao {
 	public Customer getCustomerById(int creditId) {
 		
 		Customer Customer = new Customer();
-		String sql = "SELECT * FROM Customer WHERE creditId = ? ";
+		String sql = "SELECT * FROM customer WHERE creditId = ? ";
 		
 		Customer = (Customer) jdbcTemplate.queryForObject(sql, new Object [] {creditId}, new CustomerRowMaper());
 		
