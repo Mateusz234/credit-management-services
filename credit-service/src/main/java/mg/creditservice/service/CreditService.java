@@ -27,15 +27,13 @@ public class CreditService {
 	public List<Credit> getAllCredits() {
 		creditList = creditDao.getAll();
 		for (Credit c : creditList) {
-			// TODO change that hardcoded method for discovery
 			c.setCustomer(
 					restTemplate.getForObject("http://customer-service:8083/getCustomer/" + c.getCreditId(), Customer.class));
-					//restTemplate.getForObject("http://localhost:8083/getCustomer/" + c.getCreditId(), Customer.class));
+//					restTemplate.getForObject("http://localhost:8083/getCustomer/" + c.getCreditId(), Customer.class));
 			c.setProduct(
 					restTemplate.getForObject("http://product-service:8082/getProduct/" + c.getCreditId(), Product.class));
-					//restTemplate.getForObject("http://localhost:8082/getProduct/" + c.getCreditId(), Product.class));
+//					restTemplate.getForObject("http://localhost:8082/getProduct/" + c.getCreditId(), Product.class));
 		}
-		// TODO return creditlist to string. override credit tostring
 		return creditList;
 	}
 
@@ -50,8 +48,7 @@ public class CreditService {
 		restTemplate.postForObject("http://customer-service:8083/createCustomer/", credit.getCustomer(), Customer.class);
 //		restTemplate.postForObject("http://localhost:8082/createProduct/", credit.getProduct(), Product.class);
 //		restTemplate.postForObject("http://localhost:8083/createCustomer/", credit.getCustomer(), Customer.class);
-		// TODO return ID if ok, else return -1 - controller will show error page with
-		// desc
+
 		return credit.getCreditId();
 	}
 

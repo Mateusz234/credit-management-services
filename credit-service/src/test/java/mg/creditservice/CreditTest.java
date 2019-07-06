@@ -47,6 +47,5 @@ public class CreditTest {
 	public void shouldNotAllowToUseSpecialSignsAndNumbersInName() {
 		newCredit.setName("Kr@d1yt");
 	}
-	
-	// TODO add tests for not nulls for product and customer
+
 }

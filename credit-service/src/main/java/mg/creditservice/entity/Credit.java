@@ -73,12 +73,19 @@ public class Credit {
 		return false;
 	}
 
+	/** 
+	 * Dont't display all fields, only those specified in documentation.
+	 * Display credit in JSON.
+	 */
 	@Override
 	public String toString() {
-		return "Credit [creditId=" + creditId + ", name=" + name + ", customer=" + customer + ", product=" + product
-				+ "]";
+		return "{\"firstName\":" + "\"" + customer.getName() + "\"" + "," + 
+			   "  \"surname\":" + "\"" + customer.getLastName() + "\"" + "," +
+			   "  \"PESEL\":" + "\"" + customer.getPersonalId() + "\"" + "," +
+			   "  \"productName\":" + "\"" + product.getName() + "\"" + "," +
+			   "  \"value\":" + product.getValue() + "," +
+			   "  \"creditName\":" + "\"" + name + "\"" + "}";
 	}
 
-	// TODO override toString and build new string with fields needed
 
 }

@@ -1,7 +1,5 @@
 package mg.creditservice.controller;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -40,8 +38,8 @@ public class CreditController {
 	}
 	
 	@RequestMapping(method=RequestMethod.GET, value="/getCredits")
-	public List<Credit> getCredits() {
-		return creditService.getAllCredits();
+	public String getCredits() {
+		return creditService.getAllCredits().toString();
 	}
 	
 }

@@ -18,7 +18,6 @@ public class CustomerService {
 	
 	public void createCustomer(Customer customer) {
 		customerDao.add(customer);
-		//TODO make it return 1 if created fine or -1 if there is trouble.
 	}
 	
 }

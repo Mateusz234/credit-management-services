@@ -19,8 +19,6 @@ public class ProductController {
 	@RequestMapping(method=RequestMethod.POST, value="/createProduct")
 	public void createProduct(@RequestBody Product product) {
 		productService.createProduct(product);
-		// TODO make it return value to say succes or not
-//		return 10;
 	}
 	
 	@RequestMapping(method=RequestMethod.GET, value="/getProduct/{creditId}")

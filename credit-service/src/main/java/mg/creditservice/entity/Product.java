@@ -68,15 +68,4 @@ public class Product {
 		return false;
 	}
 
-	// numbers in ascii have values 48-57
-	private boolean hasFoundNotANumberInString(String stringToCheck) {
-		int cAscii;
-		for (char c : stringToCheck.toCharArray()) {
-			cAscii = (int) c;
-			if (!(cAscii >= 48 && cAscii <= 57))
-				return true;
-		}
-		return false;
-	}
-
 }

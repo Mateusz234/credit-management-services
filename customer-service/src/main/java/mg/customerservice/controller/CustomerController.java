@@ -19,8 +19,6 @@ public class CustomerController {
 	@RequestMapping(method=RequestMethod.POST, value="/createCustomer")
 	public void createCustomer(@RequestBody Customer customer) {
 		customerService.createCustomer(customer);
-		//TODO make it return status of creating customer.
-//		return "true";
 	}
 	
 	@RequestMapping(method=RequestMethod.GET, value="/getCustomer/{creditId}")

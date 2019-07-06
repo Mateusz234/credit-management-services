@@ -18,7 +18,7 @@ public class dbConnectionConfig {
 //		dataSourceBuilder.url("jdbc:mysql://192.168.1.63:3306/creditDB?serverTimezone=UTC"); // connection with my local db
 		dataSourceBuilder.url("jdbc:mysql://mysql/creditdb?serverTimezone=UTC&useSSL=false&allowPublicKeyRetrieval=true");
 		dataSourceBuilder.username("product");
-		dataSourceBuilder.password("123456"); //TODO hide it in prop file
+		dataSourceBuilder.password("123456");
 		dataSourceBuilder.driverClassName("com.mysql.jdbc.Driver");
 		return dataSourceBuilder.build();
 
